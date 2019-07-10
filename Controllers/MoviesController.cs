@@ -36,6 +36,12 @@ namespace Vidly.Controllers
             // return new EmptyResult();
             // return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
         }
+
+        public ActionResult Movies()
+        {
+            ViewBag.Message = "Here is a list over our movies:";
+            return View();
+        }
   
 
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
