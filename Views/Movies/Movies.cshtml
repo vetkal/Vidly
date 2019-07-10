@@ -1,27 +1,36 @@
-﻿@model Vidly.ViewModels.MoviesViewModel
-
+﻿@model IEnumerable<Vidly.Models.Movie>
 @{
     ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
+<h4>@ViewBag.Message</h4>
 
-<h4>Movie Title  | ID</h4>
+<p>
+    In the table below you will find our movies.
+</p>
 
-@if (Model.Movie.Count == 0)
+<h2>Movies</h2>
+@if (!Model.Any())
 {
     <p>We don't have any movies.</p>
 }
 else
 {
-<ul>
-    @foreach (var movie in Model.Movie)
-    {
-        <li>Title: @movie.Name and ID: @movie.Id </li>
-    }
-</ul>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-
-@*<h4>@Model.Name    | @Model.Id </h4>*@
