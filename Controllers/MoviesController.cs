@@ -14,6 +14,7 @@ namespace Vidly.Controllers
         public ViewResult Movies()
         {
             var movies = GetMovies();
+
             return View(movies);
         }
 
@@ -33,9 +34,9 @@ namespace Vidly.Controllers
         {
             return new List<Movie>
             {
-                new Movie { Id = 1, Name = "Shrek" },
-                new Movie { Id = 2, Name = "Wall-e" },
-                new Movie { Id = 3, Name = "Cars"}
+                new Movie { Id = 1, Name = "Shrek", Description = "About a green monster"},
+                new Movie { Id = 2, Name = "Wall-e", Description = "Robot life"},
+                new Movie { Id = 3, Name = "Cars", Description = "About talking cars"}
             };
         }
         // GET: Movies/Random
