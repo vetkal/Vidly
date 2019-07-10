@@ -40,9 +40,31 @@ namespace Vidly.Controllers
         public ActionResult Movies()
         {
             ViewBag.Message = "Here is a list over our movies:";
-            return View();
+
+            var all_movies = new List<Movie>
+            {
+                new Movie { Name = "Movie 1", Id = 1 },
+                new Movie { Name = "Movie 2", Id = 2 },
+                new Movie { Name = "Movie 3", Id = 3 }
+            };
+
+            var viewModel = new MoviesViewModel
+            {
+                Movie = all_movies 
+            };
+                
+                return View(viewModel);
         }
-  
+
+        public ActionResult View1()
+        {
+            ViewBag.Message = "Here is a list over our movies:";
+
+            var mov = new Movie() { Name = "Movie 1", Id = 1 };
+
+            return View("View1", mov);
+        }
+
 
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
