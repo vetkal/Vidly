@@ -9,8 +9,9 @@ namespace Vidly.Controllers
     public class testController : Controller
     {
         // GET: test
-        public ActionResult Index()
+        public ActionResult Test()
         {
+            ViewBag.Message = "This is my test page!";
             return View();
         }
     }
